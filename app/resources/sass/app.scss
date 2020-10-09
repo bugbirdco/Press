@@ -1,0 +1,15 @@
+@import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-vue/src/index.scss';
+
+@import '~@fortawesome/fontawesome-free/css/all';
+
+@supports (display: flex) {
+    #unsupported {
+        display: none;
+    }
+
+    #app.ready {
+        display: flex !important;
+        height: 100vh;
+    }
+}

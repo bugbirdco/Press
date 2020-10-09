@@ -1,0 +1,36 @@
+{
+  "name": "bugbirdco/press",
+  "type": "project",
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org",
+      "only": [
+        "wpackagist-plugin/*",
+        "wpackagist-theme/*"
+      ]
+    }
+  ],
+  "extra": {
+    "installer-paths": {
+      "resources/plugins/{$name}/": "type:wordpress-plugin",
+      "resources/vendor-themes/{$name}/": "type:wordpress-theme"
+    },
+    "wordpress-install-dir": "public"
+  },
+  "require": {
+    "johnpbloch/wordpress-core": "^5.5",
+    "rarst/update-blocker": "^1.1",
+    "vlucas/phpdotenv": "^5.2",
+    "johnpbloch/wordpress-core-installer": "^2.0"
+  },
+  "scripts": {
+    "post-autoload-dump": [
+      "cp .env.example .env",
+      "rm -r public/wp-content",
+      "ln -fs ../../app/views content/themes/theme",
+      "ln -fs ../content public/wp-content",
+      "ln -fs ../.htaccess public/.htaccess"
+    ]
+  }
+}
