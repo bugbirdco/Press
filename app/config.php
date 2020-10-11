@@ -12,4 +12,6 @@
  * @package WordPress
  */
 
+define('APP_AUTOLOAD_PLUGINS', true);
+define('APP_AUTOLOAD_PLUGINS_EXCLUDE', []);
 define('APP_DEFAULT_THEME', 'theme');

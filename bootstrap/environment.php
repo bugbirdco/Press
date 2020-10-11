@@ -2,7 +2,7 @@
 
 // Create the environment. We are going to hand off some config to environment variables.
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
-$dotenv->load();
+$dotenv->safeLoad();
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
@@ -65,7 +65,8 @@ $table_prefix = 'wp_';
  */
 define('WP_DEBUG', $_ENV['WP_DEBUG'] == 'true');
 
-/* That's all, stop editing! Happy publishing. */
+// Super hack to get Carbon Fields to work properly
+define('Carbon_Fields\URL', '/wp-content/vendor-assets/carbon-fields');
 
 /** We need to reset the ABSPATH to the vendor directory */
 define('ABSPATH', __DIR__ . '/../public/');
