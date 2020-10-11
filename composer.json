@@ -43,5 +43,8 @@
       "mkdir content/vendor-assets/carbon-fields",
       "ln -fs ../../../vendor/htmlburger/carbon-fields/build content/vendor-assets/carbon-fields/build"
     ]
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^5.1"
   }
 }
