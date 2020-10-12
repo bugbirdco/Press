@@ -20,14 +20,21 @@ if (defined('APP_AUTOLOAD_PLUGINS') && APP_AUTOLOAD_PLUGINS != false) {
             require_once ABSPATH . 'wp-admin/includes/plugin.php';
         }
         $excludes = defined('APP_AUTOLOAD_PLUGINS_EXCLUDE') ? (APP_AUTOLOAD_PLUGINS_EXCLUDE ?? []) : [];
-        activate_plugins(
-            array_filter(
-                array_keys(get_plugins()),
-                function ($plugin) use ($excludes) {
-                    return !in_array($plugin, $excludes) && is_plugin_inactive($plugin);
-                }
-            )
-        );
+
+        // Activate all plugins, except those listed in exclude. (Easy removal of core plugins)
+        activate_plugins(array_filter(
+            array_keys(get_plugins()),
+            function ($plugin) use ($excludes) {
+                return !in_array($plugin, $excludes) && is_plugin_inactive($plugin);
+            }
+        ));
+        // Disable plugins in the exclude list. (Easy removal of core plugins)
+        deactivate_plugins(array_filter(
+            array_keys(get_plugins()),
+            function ($plugin) use ($excludes) {
+                return in_array($plugin, $excludes) && is_plugin_active($plugin);
+            }
+        ));
     });
 }
 

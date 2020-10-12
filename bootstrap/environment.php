@@ -4,25 +4,6 @@
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../');
 $dotenv->safeLoad();
 
-// ** MySQL settings - You can get this info from your web host ** //
-/** The name of the database for WordPress */
-define('DB_NAME', $_ENV['DB_DATABASE']);
-
-/** MySQL database username */
-define('DB_USER', $_ENV['DB_USERNAME']);
-
-/** MySQL database password */
-define('DB_PASSWORD', $_ENV['DB_PASSWORD']);
-
-/** MySQL hostname */
-define('DB_HOST', $_ENV['DB_HOSTNAME'] ?? 'localhost');
-
-/** Database Charset to use in creating database tables. */
-define('DB_CHARSET', $_ENV['DB_CHARSET'] ?? 'utf8');
-
-/** The Database Collate type. Don't change this if in doubt. */
-define('DB_COLLATE', $_ENV['DB_COLLATE'] ?? '');
-
 /**#@+
  * Authentication Unique Keys and Salts.
  *
@@ -44,14 +25,6 @@ define('NONCE_SALT', $_ENV['NONCE_SALT']);
 /**#@-*/
 
 /**
- * WordPress Database Table prefix.
- *
- * You can have multiple installations in one database if you give each
- * a unique prefix. Only numbers, letters, and underscores please!
- */
-$table_prefix = 'wp_';
-
-/**
  * For developers: WordPress debugging mode.
  *
  * Change this to true to enable the display of notices during development.
@@ -63,7 +36,7 @@ $table_prefix = 'wp_';
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define('WP_DEBUG', $_ENV['WP_DEBUG'] == 'true');
+define('WP_DEBUG', $_ENV['APP_DEBUG'] == 'true');
 
 // Super hack to get Carbon Fields to work properly
 define('Carbon_Fields\URL', '/wp-content/vendor-assets/carbon-fields');
