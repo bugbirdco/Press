@@ -33,7 +33,7 @@ define('DB_COLLATE', $_ENV['DB_COLLATE'] ?? '');
  */
 $table_prefix = 'wp_';
 
-if ($_ENV['APP_STORE_ON_S3'] ?? false) {
+if ($_ENV['APP_STORE_ON_S3'] != 'false') {
     if ($_ENV['AWS_KEY']) {
         define('S3_UPLOADS_KEY', $_ENV['AWS_KEY']);
         define('S3_UPLOADS_SECRET', $_ENV['AWS_SECRET']);
