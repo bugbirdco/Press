@@ -23,7 +23,11 @@
     "rarst/update-blocker": "^1.1",
     "vlucas/phpdotenv": "^5.2",
     "johnpbloch/wordpress-core-installer": "^2.0",
-    "htmlburger/carbon-fields-plugin": "^3.1"
+    "htmlburger/carbon-fields-plugin": "^3.1",
+    "timber/timber": "^1.18"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^5.1"
   },
   "scripts": {
     "post-create-project-cmd" : [
@@ -32,7 +36,7 @@
     ],
     "post-autoload-dump": [
       "rm -fr content/themes/theme",
-      "ln -fs ../../app/views content/themes/theme",
+      "ln -fs ../../app/handlers content/themes/theme",
 
       "rm -fr public/wp-content",
       "ln -fs ../content public/wp-content",
@@ -43,8 +47,5 @@
       "mkdir content/vendor-assets/carbon-fields",
       "ln -fs ../../../vendor/htmlburger/carbon-fields/build content/vendor-assets/carbon-fields/build"
     ]
-  },
-  "require-dev": {
-    "symfony/var-dumper": "^5.1"
   }
 }
