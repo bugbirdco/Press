@@ -1,6 +1,5 @@
 <?php
 
-
 use Timber\Site;
 use Timber\Menu;
 
@@ -25,6 +24,7 @@ class Theme extends Site
         add_filter('timber/twig', [$this, 'add_to_twig']);
         add_action('init', [$this, 'register_post_types']);
         add_action('init', [$this, 'register_taxonomies']);
+        add_action('wp_enqueue_scripts', [$this, 'register_scripts']);
         add_action('carbon_fields_register_fields', [$this, 'register_fields']);
         parent::__construct();
     }
@@ -48,6 +48,12 @@ class Theme extends Site
             ->add_fields([
                 Field::make_text('my_field', 'My Field'),
             ]);
+    }
+
+    public function register_scripts()
+    {
+        wp_enqueue_style('theme-style', get_stylesheet_uri());
+        wp_enqueue_script('theme-script', get_template_directory_uri() . '/app.js', [], null, true);
     }
 
     /** This is where you add some context
