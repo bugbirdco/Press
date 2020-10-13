@@ -16,28 +16,36 @@
 </head>
 
 <body class="{{ body_class }}">
-{% block header %}
-{% endblock %}
+{% block header %}{% endblock %}
 
-<section id="content" role="main" class="content-wrapper">
+<section>
     {% if title %}<h1>{{ title }}</h1>{% endif %}
-    <div class="wrapper {{ sidebar_class }}">
+    <div class="{{ sidebar_class }}">
         {% block content %}
             Sorry, no content
         {% endblock %}
     </div>
     {% if sidebar %}
-        <aside class="layout-sidebar">
+        <aside>
             {{ sidebar }}
         </aside>
     {% endif %}
 </section>
 
 {% block footer %}
-    <footer id="footer">
+    <footer>
         {% include 'footer.twig' %}
     </footer>
-    {{ function('wp_footer') }}
 {% endblock %}
+
+{% block scripts %}
+    <script>
+        window.$setup = window.$setup || {
+            constructor: {},
+            data: {}
+        };
+    </script>
+{% endblock %}
+{{ function('wp_footer') }}
 </body>
 </html>
