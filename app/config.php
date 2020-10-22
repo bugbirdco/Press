@@ -17,6 +17,7 @@ define('APP_AUTOLOAD_PLUGINS_EXCLUDE', [
 //    's3-uploads/s3-uploads' // Forget about s3-uploads
 ]);
 define('APP_DEFAULT_THEME', 'theme');
+define('APP_AUTO_DEACTIVATE_PLUGINS', false);
 
 // ** MySQL settings - You can get this info from your web host ** //
 define('DB_NAME', $_ENV['DB_DATABASE']);

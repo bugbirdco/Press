@@ -28,13 +28,15 @@ if (defined('APP_AUTOLOAD_PLUGINS') && APP_AUTOLOAD_PLUGINS != false) {
                 return !in_array($plugin, $excludes) && is_plugin_inactive($plugin);
             }
         ));
-        // Disable plugins in the exclude list. (Easy removal of core plugins)
-        deactivate_plugins(array_filter(
-            array_keys(get_plugins()),
-            function ($plugin) use ($excludes) {
-                return in_array($plugin, $excludes) && is_plugin_active($plugin);
-            }
-        ));
+        if (defined('APP_AUTO_DEACTIVATE_PLUGINS') && APP_AUTO_DEACTIVATE_PLUGINS) {
+            // Disable plugins in the exclude list. (Easy removal of core plugins)
+            deactivate_plugins(array_filter(
+                array_keys(get_plugins()),
+                function ($plugin) use ($excludes) {
+                    return in_array($plugin, $excludes) && is_plugin_active($plugin);
+                }
+            ));
+        }
     });
 }
 
