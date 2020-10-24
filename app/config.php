@@ -32,9 +32,9 @@ define('DB_COLLATE', $_ENV['DB_COLLATE'] ?? '');
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix = 'wp_';
+$table_prefix = 'blog_';
 
-if ($_ENV['APP_STORE_ON_S3'] != 'false') {
+if ($_ENV['APP_STORE_ON_S3'] == 'false') {
     if ($_ENV['AWS_KEY']) {
         define('S3_UPLOADS_KEY', $_ENV['AWS_KEY']);
         define('S3_UPLOADS_SECRET', $_ENV['AWS_SECRET']);

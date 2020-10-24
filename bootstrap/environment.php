@@ -43,6 +43,7 @@ define('Carbon_Fields\URL', '/wp-content/vendor-assets/carbon-fields');
 
 // Stop code editing
 define('DISALLOW_FILE_EDIT', true);
+define('DISALLOW_FILE_MODS', true);
 
 /** We need to reset the ABSPATH to the vendor directory */
 define('ABSPATH', __DIR__ . '/../public/');

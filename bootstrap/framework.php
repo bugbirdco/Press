@@ -42,9 +42,14 @@ if (defined('APP_AUTOLOAD_PLUGINS') && APP_AUTOLOAD_PLUGINS != false) {
 
 // Set the theme based on the config
 if (defined('APP_DEFAULT_THEME') && APP_DEFAULT_THEME) {
+    // Load application functions.php
+    if (file_exists(__DIR__ . '/../app/functions.php')) {
+        require_once __DIR__ . '/../app/functions.php';
+    }
+
     add_action('plugins_loaded', function () {
         $theme = array_filter(wp_get_themes(), function (WP_Theme $theme) {
-            return $theme->name == APP_DEFAULT_THEME;
+            return $theme->get_template() == APP_DEFAULT_THEME;
         });
         if (!empty($theme)) {
             /** @var WP_Theme $theme */
@@ -76,11 +81,6 @@ if (defined('APP_DEFAULT_THEME') && APP_DEFAULT_THEME) {
             Timber::$autoescape = true;
 
             new Theme();
-        }
-
-        // Load application functions.php
-        if (file_exists(__DIR__ . '/../app/functions.php')) {
-            require_once __DIR__ . '/../app/functions.php';
         }
     });
 }
