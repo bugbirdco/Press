@@ -19,7 +19,12 @@ define('APP_AUTOLOAD_PLUGINS_EXCLUDE', [
 define('APP_DEFAULT_THEME', 'theme');
 define('APP_AUTO_DEACTIVATE_PLUGINS', false);
 
-// ** MySQL settings - You can get this info from your web host ** //
+/** Host settings - Hardcode the URL. Not required */
+empty($_ENV['APP_HOME']) ?: define('WP_HOME', $_ENV['APP_HOME']);
+empty($_ENV['APP_URL']) ?: define('WP_SITEURL', $_ENV['APP_URL']);
+empty($_ENV['APP_FORCE_SSL']) ?: define('FORCE_SSL_ADMIN', $_ENV['APP_FORCE_SSL'] == 'true');
+
+/** MySQL settings - You can get this info from your web host */
 define('DB_NAME', $_ENV['DB_DATABASE']);
 define('DB_USER', $_ENV['DB_USERNAME']);
 define('DB_PASSWORD', $_ENV['DB_PASSWORD']);
